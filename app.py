@@ -5,16 +5,16 @@ import requests
 import time
 import gdown
 import os
-file_path="similarity.pkl"
+@st.cache_data(show_spinner=False)
+def load_similarity(file_path, file_url):
+    import gdown, os
+    if not os.path.exists(file_path):
+        gdown.download(file_url, file_path, quiet=False)
+    import pickle
+    with open(file_path, "rb") as f:
+        return pickle.load(f)
 
-
-if not os.path.exists(file_path):
-    url="https://drive.google.com/file/d/1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-/view?usp=drive_link"
-    gdown.download(url,file_path,quiet=False)
-
-import pickle
-with open("similarity.pkl", "rb") as f:
-    similarity = pickle.load(f)
+similarity = load_similarity("similarity.pkl", "https://drive.google.com/file/d/1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-/view?usp=drive_link")
 # ------------------------
 # Fetch poster with error handling
 # ------------------------
