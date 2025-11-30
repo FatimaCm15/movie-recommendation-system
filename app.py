@@ -7,16 +7,13 @@ import gdown
 import pickle
 import os
 
-def load_similarity(file_path, file_url):
-    if not os.path.exists(file_path):
-        gdown.download(file_url, file_path, quiet=False)
-    with open(file_path, 'rb') as f:
-        return pickle.load(f)
+# ------------------------
+# Load similarity matrix directly from local file
+# ------------------------
+with open("similarity.pkl", "rb") as f:
+    similarity = pickle.load(f)
 
-similarity = load_similarity(
-    "similarity.pkl",
-    "https://drive.google.com/uc?export=download&id=1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-"
-)
+
 
 # ------------------------
 @st.cache_data
@@ -83,4 +80,5 @@ if st.button('Recommend'):
         with col:
             st.text(name)
             st.image(poster)
+
 
