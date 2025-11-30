@@ -13,8 +13,6 @@ import os
 with open("similarity.pkl", "rb") as f:
     similarity = pickle.load(f)
 
-
-
 # ------------------------
 @st.cache_data
 def fetch_poster(movie_id):
@@ -80,5 +78,3 @@ if st.button('Recommend'):
         with col:
             st.text(name)
             st.image(poster)
-
-
