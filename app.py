@@ -3,8 +3,18 @@ import pandas as pd
 import pickle
 import requests
 import time
+import gdown
+import os
+file_path="similarity.pkl"
 
 
+if not os.path.exists(file_path):
+    url="https://drive.google.com/file/d/1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-/view?usp=drive_link"
+    gdown.download(url,file_path,quiet=False)
+
+import pickle
+with open("similarity.pkl", "rb") as f:
+    similarity = pickle.load(f)
 # ------------------------
 # Fetch poster with error handling
 # ------------------------
