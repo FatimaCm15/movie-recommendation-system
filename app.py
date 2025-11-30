@@ -15,7 +15,7 @@ def load_similarity(file_path, file_url):
 
 similarity = load_similarity(
     "similarity.pkl",
-    "https://drive.google.com/uc?export=download&id=1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-"
+    "https://drive.google.com/file/d/1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-/view?usp=drive_link"
 )
 
 # ------------------------
