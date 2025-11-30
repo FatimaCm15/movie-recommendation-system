@@ -4,19 +4,18 @@ import pickle
 import requests
 import time
 import gdown
+import pickle
 import os
-@st.cache_data(show_spinner=False)
+
 def load_similarity(file_path, file_url):
-    import gdown, os
     if not os.path.exists(file_path):
         gdown.download(file_url, file_path, quiet=False)
-    import pickle
-    with open(file_path, "rb") as f:
+    with open(file_path, 'rb') as f:
         return pickle.load(f)
 
 similarity = load_similarity("similarity.pkl", "https://drive.google.com/file/d/1ZC45QXuuCqQmFq0sYxiy8xtwxjm7NnG-/view?usp=drive_link")
-# ------------------------
-# Fetch poster with error handling
+
+
 # ------------------------
 @st.cache_data
 def fetch_poster(movie_id):
